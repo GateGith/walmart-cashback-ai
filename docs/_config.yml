@@ -1,0 +1,13 @@
+title: Walmart Cashback AI
+baseurl: "/walmart-cashback-ai"
+url: "https://gategith.github.io"
+include: [".nojekyll"]
+
+autopilot:
+  offers:
+    - url: "https://playabledownload.com/1808970" # Walmart+ Trial ($4.20)
+      weight: 70
+    - url: "https://playabledownload.com/1812345" # Fetch Rewards ($2.10)
+      weight: 20
+    - url: "https://playabledownload.com/1823467" # Ibotta ($1.80)
+      weight: 10
