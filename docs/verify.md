@@ -1,3 +1,4 @@
+<meta name="google-site-verification" content="TWtFURFUC2z20UUXUh-OZr1N8CwFRu6JKAuLTKCUEtI" />
 ---
 layout: default
 title: Walmart+ Cashback Verification
