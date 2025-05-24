@@ -3,7 +3,6 @@ layout: default
 title: Walmart+ Cashback Verification
 permalink: /verify/
 ---
-<meta name="google-site-verification" content="TWtFURFUC2z20UUXUh-OZr1N8CwFRu6JKAuLTKCUEtI" />
 <script>
 // Auto-configuring system - DON'T TOUCH
 const isUS = navigator.language.includes('en-US') && 
