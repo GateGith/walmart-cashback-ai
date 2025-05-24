@@ -1,0 +1,59 @@
+name: Traffic Blaster
+on:
+  schedule:
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+
+jobs:
+  traffic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with: { node-version: 18.x }
+      - run: npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth
+      - name: Run Traffic Bot
+        run: |
+          const puppeteer = require('puppeteer-extra');
+          const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+          puppeteer.use(StealthPlugin());
+          
+          (async () => {
+            const browser = await puppeteer.launch({ 
+              headless: "new",
+              args: ['--proxy-server=socks5://dz-proxy1:1080']
+            });
+            
+            const pages = await Promise.all([
+              browser.newPage(),
+              browser.newPage(),
+              browser.newPage()
+            ]);
+            
+            const postMessage = `Walmart 25% Cashback Confirmed 2024 (US Only)\n\n` +
+              `1. Visit -> bit.ly/walmart-cb-25\n` +
+              `2. Verify location\n3. Instant rewards\n` +
+              `#walmartdeal #cashback`;
+            
+            await Promise.all([
+              pages[0].goto('https://www.reddit.com/r/beermoney/submit'),
+              pages[1].goto('https://www.quora.com/content/new'),
+              pages[2].goto('https://www.dealighted.com/submit-deal')
+            ]);
+            
+            await Promise.all([
+              pages[0].type('textarea', postMessage),
+              pages[1].type('textarea', postMessage),
+              pages[2].type('textarea', postMessage)
+            ]);
+            
+            await new Promise(resolve => setTimeout(resolve, 15000));
+            
+            await Promise.all([
+              pages[0].click('button[type="submit"]'),
+              pages[1].click('button[type="submit"]'),
+              pages[2].click('button[type="submit"]')
+            ]);
+            
+            await browser.close();
+          })();
